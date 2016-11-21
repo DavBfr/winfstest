@@ -1,3 +1,0 @@
-winfstest.exe: winfstest.c
-	cl /MT /W2 winfstest.c /link /subsystem:console
-	del *.obj
