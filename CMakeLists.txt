@@ -1,11 +1,14 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(winfstest C)
-set(PROJECT_VERSION 1.0)
+set(VER "1.0.0.0" CACHE STRING "Set the version number")
+cmake_policy(SET CMP0048 NEW)
+
+project(winfstest VERSION "${VER}" LANGUAGES C)
+message(STATUS "ver: ${VER} pv: ${PROJECT_VERSION} ")
 set(PROJECT_TITLE "Win Fs Test")
 set(PROJECT_DESCRIPTION "Windows file system testing")
-SET(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
-set(CPACK_PACKAGE_NAME "${PROJECT_TITLE}")
+set(CPACK_PACKAGE_VERSION "${VER}")
+set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
 set(CPACK_GENERATOR "ZIP")
 set(CPACK_STRIP_FILES TRUE)
 set(CPACK_STRIP_FILES TRUE)
@@ -51,12 +54,12 @@ endif()
 add_executable(${PROJECT_NAME} ${SRC})
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "." COMPONENT bin)
-install(DIRECTORY "${OUTPUT_DIRECTORY}TestSuite/t" DESTINATION "." COMPONENT bin)
+install(DIRECTORY "${OUTPUT_DIRECTORY}/t" DESTINATION "." COMPONENT bin)
 install(FILES
-	"${OUTPUT_DIRECTORY}TestSuite/License"
-	"${OUTPUT_DIRECTORY}TestSuite/run-winfstest.bat"
-	"${OUTPUT_DIRECTORY}TestSuite/simpletap.py"
-	"${OUTPUT_DIRECTORY}TestSuite/winfstest.py"
+	"${OUTPUT_DIRECTORY}/License"
+	"${OUTPUT_DIRECTORY}/run-winfstest.bat"
+	"${OUTPUT_DIRECTORY}/simpletap.py"
+	"${OUTPUT_DIRECTORY}/winfstest.py"
 	DESTINATION "." COMPONENT bin)
 
 include(CPack)
